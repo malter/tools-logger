@@ -58,7 +58,7 @@ bool Logger::startHook()
     if (_file.value().empty())
         return false;
 
-    if(boost::filesystem::exists(_file.value()))
+    if(boost::filesystem::exists(_file.value()) && !_overwrite.get())
     {
         log(Error) << "File " << _file.value() << " already exists." << endlog();
         return false;
